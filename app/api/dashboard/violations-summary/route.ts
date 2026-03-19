@@ -9,11 +9,11 @@ export async function GET(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
 
-    if (\!session || \!session.user) {
+    if (!session || !session.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role \!== "manager") {
+    if (session.user.role !== "manager") {
       return NextResponse.json(
         { error: "Forbidden: Manager role required" },
         { status: 403 },
